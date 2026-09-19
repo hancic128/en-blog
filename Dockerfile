@@ -12,18 +12,26 @@
 
 ARG HUGO_VERSION=0.166.0
 
-FROM alpine:3.21 AS build
+FROM debian:bookworm-slim AS build
 ARG HUGO_VERSION
 
 # 直接用上游 release 的二进制，版本与本地开发环境（hugo extended）严格一致。
 # 不走第三方 hugo 镜像：镜像里的 hugo 版本一旦和本地漂移，构建结果就会开始出现
 # "本地对、线上错" 这种最难查的差异。
-RUN apk add --no-cache ca-certificates curl tar \
+#
+# ⚠️ 基础镜像**必须**是 glibc 系（debian），不能用 alpine：hugo 的 extended 版是
+# 动态链接 glibc 的（依赖 ld-linux-x86-64.so.2 / libstdc++ / libgcc_s），在 musl 上
+# 加载不了 —— 症状是 `hugo: not found`（不是权限错，极具误导性；首次构建即踩到）。
+# 运行阶段仍是 nginx:alpine，产物只是静态文件，两者互不影响。
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ca-certificates curl \
+ && rm -rf /var/lib/apt/lists/* \
  && curl -fsSL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" \
       -o /tmp/hugo.tar.gz \
  && tar -xzf /tmp/hugo.tar.gz -C /usr/local/bin hugo \
+ && chmod 0755 /usr/local/bin/hugo \
  && rm /tmp/hugo.tar.gz \
- && hugo version
+ && /usr/local/bin/hugo version
 
 WORKDIR /src
 COPY . .
