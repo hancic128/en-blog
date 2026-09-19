@@ -9,3 +9,5 @@ __pycache__/
 # dev.to 光栅化依赖：node_modules 由 npm install 还原，字体由 bake 时自动拉取
 tools/raster/node_modules/
 tools/raster/fonts/
+# 本地发布记录（含内部路径/命令，绝不入库）
+.publish-*.md

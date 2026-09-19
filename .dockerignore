@@ -1,0 +1,15 @@
+# 构建上下文瘦身：镜像里只需要站点源码
+.git
+.github
+.gitignore
+
+# Hugo 构建产物与缓存（镜像里由 hugo 重新生成）
+public/
+resources/
+.hugo_build.lock
+
+# 本地发布清单（内部流程记录，见 NOTES.md 的隐私排查）
+.publish-*.md
+
+# dev.to 发布工具链，跟镜像无关（node_modules 很大）
+tools/

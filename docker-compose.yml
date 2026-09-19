@@ -1,30 +1,21 @@
-# en-blog —— 英文博客静态托管（usa /opt/en-blog）
-# 构建产物 public/ 挂载进 nginx，内部 8091 由 my-nginx 反代（TLS 统一在 my-nginx，本容器不对外）
+# en-blog —— 本地 / 手动运行（建议用它**替换仓库根的 docker-compose.yml**）
+#
+# 为什么换：原来的根 compose 描述的是「宿主挂载 ./public 与 ./nginx/static.conf，由
+# hancic-nginx 按容器名直连」的部署形态。迁移后线上部署由私有仓库 app-deploy 接管
+# （用 services/en-blog/docker-compose.yml 拉 ACR 镜像），根 compose 既失效又留着内网路径，
+# 留着只会误导。这个文件只保留一个用途：在本机把 Dockerfile 构出来跑一眼。
+#
+#   docker compose up -d --build     # -> http://127.0.0.1:8080/
+#
+# 线上发布不读这个文件。
+
 name: en-blog
 
 services:
   blog:
-    image: nginx:1.27-alpine
-    container_name: en-blog
+    build: .
+    image: en-blog:local
+    container_name: en-blog-local
     restart: unless-stopped
     ports:
-      - "8091:80"
-    volumes:
-      - ./public:/usr/share/nginx/html:ro
-      - ./nginx/static.conf:/etc/nginx/conf.d/default.conf:ro
-    networks:
-      - default
-      - nginx_default
-    deploy:
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 64M
-        reservations:
-          cpus: "0.1"
-          memory: 32M
-
-# 与同机 my-nginx 共用的反代网络（my-nginx 按容器名 en-blog 直连）
-networks:
-  nginx_default:
-    external: true
+      - "8080:80"
