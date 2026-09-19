@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" role="img" aria-label="Cache invalidation race between read A and write B">
+  <title>Cache invalidation race between read A and write B</title>
+  <g stroke-linejoin="round">
+  <line x1="80" y1="44" x2="80" y2="220" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="80" y="36" font-size="13" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">READER A</text>
+
+  <line x1="320" y1="44" x2="320" y2="220" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="320" y="36" font-size="13" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">DATABASE</text>
+
+  <line x1="560" y1="44" x2="560" y2="220" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="560" y="36" font-size="13" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">WRITER B</text>
+
+  <line x1="64" y1="80" x2="304" y2="80" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.5"/>
+  <path d="M295,76 L305,80 L295,84 Z" fill="currentColor" fill-opacity="0.6"/>
+  <text x="184" y="74" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">miss → read</text>
+
+  <line x1="544" y1="116" x2="336" y2="116" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.5"/>
+  <path d="M345,112 L335,116 L345,120 Z" fill="currentColor" fill-opacity="0.6"/>
+  <text x="440" y="110" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">commit V2</text>
+
+  <line x1="544" y1="152" x2="64" y2="152" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M73,148 L63,152 L73,156 Z" fill="currentColor" fill-opacity="0.6"/>
+  <text x="304" y="146" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">broadcast clear</text>
+
+  <line x1="304" y1="188" x2="64" y2="188" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.5"/>
+  <path d="M73,184 L63,188 L73,192 Z" fill="currentColor" fill-opacity="0.6"/>
+  <text x="184" y="182" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">returns V1 (old)</text>
+
+  <rect x="36" y="206" width="88" height="22" rx="4" fill="#d97706" fill-opacity="0.18" stroke="#d97706" stroke-opacity="0.55" stroke-width="1.2"/>
+  <text x="80" y="221" font-size="11" fill="currentColor" fill-opacity="0.85" text-anchor="middle" font-weight="600">cache = V1</text>
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="Pub/sub message loss when subscriber disconnects">
+  <title>Pub/sub message loss when subscriber disconnects</title>
+  <g stroke-linejoin="round">
+  <line x1="120" y1="40" x2="120" y2="200" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="120" y="32" font-size="13" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">WRITER</text>
+
+  <line x1="360" y1="40" x2="360" y2="200" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="360" y="32" font-size="13" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">PUBSUB</text>
+
+  <line x1="600" y1="40" x2="600" y2="200" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="600" y="32" font-size="13" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">SUBSCRIBER</text>
+
+  <rect x="76" y="68" width="88" height="22" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.42" stroke-width="1.2"/>
+  <text x="120" y="83" font-size="11" fill="currentColor" fill-opacity="0.85" text-anchor="middle">commit V2</text>
+
+  <line x1="164" y1="79" x2="316" y2="79" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.5"/>
+  <path d="M307,75 L317,79 L307,83 Z" fill="currentColor" fill-opacity="0.6"/>
+  <text x="240" y="73" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">publish clear</text>
+
+  <rect x="556" y="120" width="88" height="22" rx="4" fill="none" stroke="#d97706" stroke-opacity="0.55" stroke-width="1.2"/>
+  <text x="600" y="135" font-size="11" fill="#d97706" fill-opacity="0.85" text-anchor="middle">disconnected</text>
+
+  <line x1="404" y1="79" x2="556" y2="131" stroke="#d97706" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M549,127 L558,131 L552,135 Z" fill="#d97706" fill-opacity="0.55"/>
+  <text x="478" y="100" font-size="11" fill="#d97706" fill-opacity="0.85" text-anchor="middle">message dropped</text>
+
+  <rect x="76" y="160" width="88" height="22" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.42" stroke-width="1.2"/>
+  <text x="120" y="175" font-size="11" fill="currentColor" fill-opacity="0.85" text-anchor="middle">next read</text>
+
+  <line x1="164" y1="171" x2="556" y2="171" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.5"/>
+  <path d="M547,167 L557,171 L547,175 Z" fill="currentColor" fill-opacity="0.6"/>
+  <text x="360" y="165" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">cache still V1</text>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 248" role="img" aria-label="Three cache invalidation patterns and their failure modes">
+  <title>Three cache invalidation patterns and their failure modes</title>
+  <g stroke-linejoin="round">
+  <rect x="24" y="24" width="216" height="200" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.42" stroke-width="1.5"/>
+  <text x="132" y="54" font-size="14" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">TTL</text>
+  <text x="132" y="78" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">lazy reload on expiry</text>
+  <line x1="40" y1="94" x2="224" y2="94" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/>
+  <text x="132" y="116" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">consistency: weak</text>
+  <text x="132" y="138" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">latency: low</text>
+  <text x="132" y="160" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">complexity: low</text>
+  <text x="132" y="186" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">stale reads in</text>
+  <text x="132" y="204" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">the TTL window</text>
+
+  <rect x="252" y="24" width="216" height="200" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.42" stroke-width="1.5"/>
+  <text x="360" y="54" font-size="14" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">EVENT-DRIVEN</text>
+  <text x="360" y="78" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">clear on broadcast</text>
+  <line x1="268" y1="94" x2="452" y2="94" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/>
+  <text x="360" y="116" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">consistency: fast, brittle</text>
+  <text x="360" y="138" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">latency: low</text>
+  <text x="360" y="160" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">complexity: medium</text>
+  <text x="360" y="186" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">lost messages,</text>
+  <text x="360" y="204" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">out-of-order clears</text>
+
+  <rect x="480" y="24" width="216" height="200" rx="10" fill="none" stroke="#d97706" stroke-opacity="0.55" stroke-width="2"/>
+  <rect x="480" y="24" width="216" height="200" rx="10" fill="#d97706" fill-opacity="0.06"/>
+  <text x="588" y="54" font-size="14" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">WRITE-THROUGH</text>
+  <text x="588" y="78" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">update both, always</text>
+  <line x1="496" y1="94" x2="680" y2="94" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/>
+  <text x="588" y="116" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">consistency: strong</text>
+  <text x="588" y="138" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">latency: higher writes</text>
+  <text x="588" y="160" font-size="11" fill="currentColor" fill-opacity="0.6" text-anchor="middle">complexity: medium</text>
+  <text x="588" y="186" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">partial success,</text>
+  <text x="588" y="204" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">serial bottleneck</text>
+  </g>
+</svg>

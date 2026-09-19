@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="Decision flow for picking a cache invalidation pattern">
+  <title>Decision flow for picking a cache invalidation pattern</title>
+  <g stroke-linejoin="round">
+  <rect x="220" y="20" width="280" height="48" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"/>
+  <text x="360" y="44" font-size="14" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">class of data?</text>
+  <text x="360" y="60" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">read frequency, write cost, tolerance</text>
+
+  <line x1="280" y1="68" x2="180" y2="100" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="360" y1="68" x2="360" y2="100" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="440" y1="68" x2="540" y2="100" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <text x="190" y="94" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">wrong number</text>
+  <text x="190" y="106" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">reaches user</text>
+
+  <text x="360" y="94" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">reads dominate,</text>
+  <text x="360" y="106" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">staleness OK</text>
+
+  <text x="530" y="94" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">many writers,</text>
+  <text x="530" y="106" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">low latency</text>
+
+  <rect x="68" y="124" width="208" height="64" rx="10" fill="none" stroke="#d97706" stroke-opacity="0.55" stroke-width="2"/>
+  <rect x="68" y="124" width="208" height="64" rx="10" fill="#d97706" fill-opacity="0.06"/>
+  <text x="172" y="150" font-size="14" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">WRITE-THROUGH</text>
+  <text x="172" y="170" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">accept the write cost</text>
+  <line x1="172" y1="118" x2="172" y2="124" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <rect x="296" y="124" width="160" height="64" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.42" stroke-width="1.5"/>
+  <text x="376" y="150" font-size="14" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">TTL</text>
+  <text x="376" y="170" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">set window to tolerance</text>
+  <line x1="376" y1="118" x2="376" y2="124" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <rect x="476" y="124" width="200" height="64" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.42" stroke-width="1.5"/>
+  <text x="576" y="146" font-size="14" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">EVENT-DRIVEN + TTL</text>
+  <text x="576" y="166" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">broadcast +</text>
+  <text x="576" y="182" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">expiry safety net</text>
+  <line x1="576" y1="118" x2="576" y2="124" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <line x1="172" y1="188" x2="172" y2="220" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="376" y1="188" x2="376" y2="220" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="576" y1="188" x2="576" y2="220" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.2" stroke-dasharray="3 3"/>
+
+  <rect x="48" y="220" width="624" height="40" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"/>
+  <text x="360" y="244" font-size="13" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">write down the failure mode. ship it.</text>
+  </g>
+</svg>
