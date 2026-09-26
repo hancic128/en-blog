@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="Batch processing narrows the crash window from 500 to 1">
+  <title>Batch processing narrows the crash window from 500 to 1</title>
+  <g stroke-linejoin="round">
+  <text x="20" y="24" font-size="12" fill="currentColor" fill-opacity="0.9" font-weight="600">WITHOUT BATCH</text>
+
+  <rect x="24" y="36" width="600" height="36" rx="6" fill="none" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/>
+  <rect x="30" y="42" width="20" height="24" rx="3" fill="#d97706" fill-opacity="0.18" stroke="#d97706" stroke-opacity="0.55" stroke-width="1"/>
+  <rect x="56" y="42" width="20" height="24" rx="3" fill="#d97706" fill-opacity="0.18" stroke="#d97706" stroke-opacity="0.55" stroke-width="1"/>
+  <rect x="82" y="42" width="20" height="24" rx="3" fill="#d97706" fill-opacity="0.18" stroke="#d97706" stroke-opacity="0.55" stroke-width="1"/>
+  <text x="120" y="58" font-size="11" fill="currentColor" fill-opacity="0.55">... 500 windows</text>
+  <rect x="280" y="42" width="20" height="24" rx="3" fill="#d97706" fill-opacity="0.18" stroke="#d97706" stroke-opacity="0.55" stroke-width="1"/>
+  <rect x="306" y="42" width="20" height="24" rx="3" fill="#d97706" fill-opacity="0.18" stroke="#d97706" stroke-opacity="0.55" stroke-width="1"/>
+  <text x="610" y="58" font-size="11" fill="currentColor" fill-opacity="0.55">...</text>
+
+  <line x1="24" y1="86" x2="696" y2="86" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/>
+
+  <text x="20" y="110" font-size="12" fill="currentColor" fill-opacity="0.9" font-weight="600">WITH BATCH</text>
+
+  <rect x="24" y="122" width="600" height="36" rx="6" fill="none" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/>
+
+  <rect x="280" y="128" width="80" height="24" rx="4" fill="#d97706" fill-opacity="0.18" stroke="#d97706" stroke-opacity="0.55" stroke-width="1.5"/>
+  <text x="320" y="144" font-size="11" fill="currentColor" fill-opacity="0.9" text-anchor="middle" font-weight="600">1 window</text>
+
+  <text x="320" y="180" font-size="11" fill="currentColor" fill-opacity="0.55" text-anchor="middle">500 messages, 1 pipeline write, 1 crash window</text>
+  </g>
+</svg>

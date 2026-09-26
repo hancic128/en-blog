@@ -23,6 +23,8 @@ Writing the count and setting the key are two separate cache operations. Between
 
 I call this the crash window. It is a few milliseconds wide. It cannot close.
 
+{{< diagram "crash-window.svg" "The crash window between write and set key" >}}
+
 Distributed caches do not support cross-key transactions. You cannot atomically write the count and set the idempotency key in a single operation. You could introduce an external transaction coordinator, or a distributed lock, or a two-phase commit. Each adds a new component that can fail, and each new component fails in ways that are harder to observe than a double-count.
 
 ## Which failure to live with
@@ -37,6 +39,8 @@ Data loss produces nothing. The count is too low, but there is no signal. The mi
 
 I write the count first, then set the key. If I crash between them, I double-count. I accept that deviation because I can measure it, bound it, and catch it. I cannot do any of those things with data loss.
 
+{{< diagram "two-orderings.svg" "Two orderings, two failure modes" >}}
+
 ## Bounding instead of closing
 
 The idempotency key has a TTL of 10 minutes. Crash recovery on our infrastructure takes 1 to 3 minutes. If the process comes back within the TTL, the key is still there. The redelivery hits the pre-check, finds the key, and skips. No double-count.
@@ -48,6 +52,8 @@ I know the redelivery rate. I know the crash recovery distribution. I know the T
 I track three counters. Messages received. Idempotent keys hit, which means duplicates caught. Occupation failures after successful writes, which means the crash window fired. The third counter tells me how many times the window happened. If it spikes, something changed in the crash pattern. If it stays flat, the deviation is within the expected range.
 
 Batch processing narrows the window. The service collects a batch of messages, aggregates them in memory, and submits one pipeline write to the cache. The crash window exists between that single write and the subsequent key occupation. A batch of 500 messages produces one window, not 500. If the batch fails, the queue redelivers the whole batch. The idempotency check catches it.
+
+{{< diagram "batch-window.svg" "Batch narrows 500 windows to 1" >}}
 
 ## The trade I made
 
