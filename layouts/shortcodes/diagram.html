@@ -1,0 +1,14 @@
+{{- /* Inline an SVG diagram from assets/diagrams/.
+       Usage: {{< diagram "name.svg" "short caption" >}}            */ -}}
+{{- $name := .Get 0 -}}
+{{- $caption := .Get 1 -}}
+{{- with resources.Get (printf "diagrams/%s" $name) -}}
+<figure class="diagram">
+  {{ .Content | safeHTML }}
+  {{- with $caption }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
+</figure>
+{{- else -}}
+{{- errorf "diagram shortcode: asset diagrams/%s not found" $name -}}
+{{- end -}}
