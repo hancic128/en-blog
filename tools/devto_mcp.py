@@ -30,7 +30,7 @@ BLOG_URL = "https://en.hancic.site"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIAGRAM_SRC = os.path.join(REPO_ROOT, "assets", "diagrams")
 DIAGRAM_OUT = os.path.join(REPO_ROOT, "static", "diagrams")
-DIAGRAM_URL = f"{BLOG_URL}/diagrams"
+DIAGRAM_URL = f"{BLOG_URL}/static/diagrams"
 INK = "#1e1e1e"
 PAPER = "#ffffff"
 
